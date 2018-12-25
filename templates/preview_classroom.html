@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<section id="classroom_header" class="py-5">
+    <div class="container ">
+        <div class="row">
+            <div class="col-12 bg-light py-5">
+                <h2>{{classroom.ClassName}}</h2>
+                <p class="small col-9">{{classroom.ClassDescription}}</p>
+                <p><i class="fas fa-chalkboard-teacher"></i> <strong>Instructor : </strong> {{classroomOwner.FullName}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 py-5">
+                <ol>
+                    {% for assignment in cls_assignments %}
+                        <li>
+                            <h5><a class="pt-sans" href="{{ url_for('assignment_details',class_id=classroom.ClassroomID, assignment_id=assignment.AssignmentID )}}">{{assignment.Name }}</a></h5>
+                            <p class="small pt-sans">{{ assignment.Description }}</p>
+                             <a class="btn btn-primary" href="{{ url_for('assignment_details',class_id=classroom.ClassroomID, assignment_id=assignment.AssignmentID )}}">Enter</a>
+                            <hr>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

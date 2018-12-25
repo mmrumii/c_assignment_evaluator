@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <h3>Create new assignment</h3>
+                <form method="post" action="{{ url_for('assignments') }}">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Select classroom</label>
+                        <select class="form-control" name="class_name" id="exampleFormControlSelect1">
+                         {% for cls in classes %}
+                          <option>{{ cls.ClassName }}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="name" id="example-text-input" placeholder="Assignment name. Ex. : Assignment One">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleTextarea" name="description" rows="3" placeholder="Assignment description. Ex. : General terms and rules etc"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6">
+                <h3>Existing Assignments</h3>
+                <p>All assignments created by you will be displayed below.</p>
+
+                <ol>
+                    {% for assign in assignments %}
+                    <li>
+                        <h5><a class="pt-sans" href="{{ url_for('assignment_preview', assignment_id=assign.AssignmentID )}}">{{assign.Name }}</a></h5>
+                        <p class="small pt-sans">{{ assign.Description }}</p>
+                         <a class="btn btn-primary" href="{{ url_for('assignment_preview', assignment_id=assign.AssignmentID )}}">Enter</a>
+                        <hr>
+                    </li>
+                    {% endfor %}
+                </ol>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

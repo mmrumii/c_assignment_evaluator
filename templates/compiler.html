@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form method="post" action="{{ url_for(target) }}">
+                    <div id="title-code" class="head-section">
+                      Source Code
+                    </div>
+                    <input id="launch-button" class="head-section" type="submit" value="Launch" />
+                    <textarea id="text-code" name="code" rows={{ rows }} cols={{ cols }}>
+                    {{ code }}
+                    </textarea><br/>
+                    <div id="text-code-ace" class="hidden">{{ code }}</div>
+                    {% endblock %}
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<section class="py-5">
+  <div class="container">
+    {% for grade in grades %}
+  <ul class="py-3">
+    <li><strong>Student ID : </strong>{{grade.StudentID}}</li>
+    <li><strong>AssignmentID : </strong>{{ grade.AssignmentID }}</li>
+    <li><strong>Grade : {{ grade.GradePoint }}</strong></li>
+  </ul>
+  {% endfor %}
+  </div>
+</section>
+
+
+{%endblock%}

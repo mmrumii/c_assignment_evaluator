@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form method="POST" action="{{ url_for('new_problem')}}">
+                    {{ problem_form.hidden_tag() }}
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Classroom :</label>
+                        <div class="col-sm-10">
+                          {{ problem_form.ClassroomID }}
+                        </div>
+
+                      </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Problem Description : </label>
+                        <div class="col-sm-10">
+                          {{ problem_form.ProblemDescription(class = 'col-6') }}
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Function name : </label>
+                        <div class="col-sm-10">
+                          {{ problem_form.FunctionName(class = 'col-6') }}
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Input Data : </label>
+                        <div class="col-sm-10">
+                          {{ problem_form.SampleInput(class = 'col-6') }}
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Input Data type : </label>
+                        <div class="col-sm-10">
+                          {{ problem_form.InputDataType }}
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Expected Output : </label>
+                        <div class="col-sm-10">
+                          {{ problem_form.ExpectedOutput(class = 'col-6') }}
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="inputEmail3" class="col-sm-2 col-form-label">Output data type : </label>
+                        <div class="col-sm-10">
+                          {{ problem_form.OutputDataType }}
+                        </div>
+                      </div>
+                    {{ problem_form.Submit }}
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

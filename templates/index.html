@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section id="welcome">
+
+        <div class="jumbotron jumbotron-fluid bg-warning mb-0">
+
+          <div class="container py-5 text-center text-dark">
+            <h1 class="display-4 text-center fnt_kumar">Assignment Evaluator</h1>
+            <h3 class="fnt_opensans">Hello World ! </h3>
+            {% if current_user.is_authenticated %}
+            <a class="btn btn-dark fnt_ptsans" href="{{ url_for('dashboard')}}">Go to Dashboard</a>
+            {% else %}
+            <a class="btn btn-dark fnt_ptsans" href="{{ url_for('login')}}">Login</a>
+            <a class="btn btn-dark fnt_ptsans" href="{{ url_for('register')}}">Sign Up</a>
+            {% endif %}
+            <h1 class="fnt_anton">Welcome to the new era of virtual evaluator.</h1>
+            <p class="fnt_ptsans">Your playground to learn how to play with C</p>
+              <form action="{{ url_for('search_classroom') }}" method="post">
+                  <div class="form-group row">
+                      <div class="col-2"></div>
+
+                      <div class="col-5">
+                        <input class="form-control" name="class_id" type="number" id="example-number-input" placeholder="Enter classroom id">
+                      </div>
+                      <div class="col-1">
+                      <button type="submit" class="btn btn-primary">Search Classroom</button>
+                  </div>
+                  </div>
+
+
+              </form>
+          </div>
+
+        </div>
+
+</section>
+
+<section class="bg-info py-5 text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 pr-5">
+                <h3 class="fnt_opensans"><strong>Planning to submit assignment ?</strong></h3>
+                <p class="fnt_ptsans small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                <a class="btn btn-dark fnt_ptsans" href="#">Submit Assignment</a>
+            </div>
+            <div class="col-6 pr-5">
+                <h3 class="fnt_opensans"><strong>Are you looking for your classroom ?</strong></h3>
+                <p class="fnt_ptsans small">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+                <a class="btn btn-dark fnt_ptsans" href="{{url_for('all_classrooms')}}">Find Classroom</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

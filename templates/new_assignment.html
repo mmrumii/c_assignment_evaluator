@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <h1 class="mb-3">Create new assignment</h1>
+                <form method="post" action="{{url_for('new_assignment')}}" enctype="multipart/form-data">
+                    <div class="custom-file py-5">
+                      <input type="file" class="custom-file-input" id="problemFile" name="problemFile">
+                      <label class="custom-file-label" for="problemFile">Choose assignment pdf file</label>
+                    </div>
+                    <div class="custom-file py-5">
+                      <input type="file" class="custom-file-input" id="inputFile" name="inputFile">
+                      <label class="custom-file-label" for="inputFile">Choose input txt file</label>
+                    </div>
+                    <div class="custom-file py-5">
+                      <input type="file" class="custom-file-input" id="outputFile" name="outputFile">
+                      <label class="custom-file-label" for="outputFile">Choose output txt file</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

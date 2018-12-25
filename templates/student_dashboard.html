@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row py-5">
+            <div class="col-6">
+                {% if current_user.is_authenticated %}
+
+                <img class="mb-5 img-fluid col-4 float-left mr-5" src="{{url_for('static', filename='images/user.png')}}">
+                <h3>{{current_user.FullName}}</h3>
+                <p class="small mb-4">{{current_user.UserType}}</p>
+                <p><strong>Username : </strong>{{current_user.Username}}</p>
+                <p><strong>Email address : </strong>{{current_user.EmailAddress}}</p>
+                <a class="mt-5" href="{{url_for('logout')}}">Log out</a>
+                {% endif %}
+            </div>
+            <div class="col-6">
+                <h4>Your Classrooms</h4>
+                <hr>
+                <ul>
+                    {% for enroll in enrollments %}
+                    <li>
+                        <div class="col-12">
+                            <h3>{{ enroll.ClassName }}</h3>
+                            <p class="small">{{ enroll.ClassDescription }}</p>
+                            <a class="btn btn-large btn-info" href="{{url_for('classroom_preview',class_id=enroll.ClassroomID)}}">Go to classroom</a>
+                            <hr>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

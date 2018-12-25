@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-8">
+                <h3>All Assignments</h3>
+                <p>All assignments listed below.</p>
+
+
+                    {% for assign in assignments %}
+                    <h5>Assignment ID : <strong>{{assign.AssignmentID }}</strong></h5>
+                    <p>{{assign.Problem_TXT }}</p>
+                    <a href="{{ url_for('submit_solution') }}" class="btn btn-primary mb-5">Sibmit Solution</a>
+                    {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

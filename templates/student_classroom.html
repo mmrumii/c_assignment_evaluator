@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h4>Your Classrooms</h4>
+                <hr>
+                <ul>
+                    {% for enroll in enrollments %}
+                    <li>
+                        <div class="col-12">
+                            <h3>{{ enroll.ClassName }}</h3>
+                            <p class="small">{{ enroll.ClassDescription }}</p>
+                            <a class="btn btn-large btn-info" href="{{url_for('classroom_preview',class_id=enroll.ClassroomID)}}">Go to classroom</a>
+                            <hr>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-6">
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

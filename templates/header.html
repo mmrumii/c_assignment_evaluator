@@ -1,0 +1,45 @@
+<section class="bg-dark">
+
+        <nav class="navbar container navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand fnt_pattaya" href="{{url_for('home')}}">AsignmentEvaluator</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse mr-right" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-right">
+              <li class="nav-item active">
+                <a class="nav-link" href="{{url_for('home')}}">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('all_classrooms')}}">Classrooms</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('about')}}">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('contact')}}">Contact us</a>
+              </li>
+              <li class="nav-item">
+              {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="btn btn-dark fnt_ptsans" href="{{ url_for('dashboard')}}">Go to Dashboard</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="btn btn-dark fnt_ptsans" href="{{ url_for('login')}}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-dark fnt_ptsans" href="{{ url_for('register')}}">Sign Up</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+
+</section>
+
+
+
+
+

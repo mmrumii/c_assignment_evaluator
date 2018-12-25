@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row py-5">
+            <div class="col-6">
+                {% if current_user.is_authenticated %}
+
+                <img class="mb-5 img-fluid col-4 float-left mr-5" src="{{url_for('static', filename='images/user.png')}}">
+                <h3>{{current_user.FullName}}</h3>
+                <p class="small mb-4">{{current_user.UserType}}</p>
+                <p><strong>Username : </strong>{{current_user.Username}}</p>
+                <p><strong>Email address : </strong>{{current_user.EmailAddress}}</p>
+                <a class="mt-3" href="{{url_for('logout')}}">Log out</a>
+                {% endif %}
+            </div>
+            <div class="col-6">
+                <ul>
+                    <li><a href="{{ url_for('classroom') }}">Classroom</a></li>
+                    <li><a href="{{ url_for('grades') }}">Grades</a></li>
+                    <li><a href="{{url_for('assignments')}}">Assignments</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

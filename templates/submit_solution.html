@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+            </div>
+            <div class="col-6">
+                <h1 class="mb-3">Submit Solution</h1>
+                <form method="post" action="{{url_for('submit_solution')}}" enctype="multipart/form-data">
+                    <div class="custom-file py-5">
+                      <input type="file" class="custom-file-input" id="problemFile" name="solutionFile">
+                      <label class="custom-file-label" for="problemFile">Choose solution .c file</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Evaluate</button>
+                </form>
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

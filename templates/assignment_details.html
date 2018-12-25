@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col py-5">
+                <h2>{{cls.ClassName}}</h2>
+                <p class="small col-9">{{cls.ClassDescription}}</p>
+                <p><i class="fas fa-chalkboard-teacher"></i> <strong>Instructor : </strong> {{classroom_owner.FullName}}</p>
+            </div>
+        </div>
+        <div class="row py-5">
+            <h2>{{ asn.Name }}</h2>
+            <p class="small">{{ asn.Description }}</p>
+        </div>
+        <div class="col">
+            <ol>
+                {% for task in tasks %}
+                    <li class="py-5">
+                        <p><strong>{{task.Problem_TXT}}</strong></p>
+
+                    <form class="my-1" method="post" action="{{url_for('submit_solution')}}" enctype="multipart/form-data">
+                            <input type="hidden" id="custId" name="task_id" value="{{ task.TaskID }}">
+                            <div class="custom-file col-8">
+                              <input type="file" class="custom-file-input" id="problemFile" name="solutionFile">
+                              <label class="custom-file-label" for="problemFile">Choose solution .c file</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-1">Evaluate</button>
+                        </form>
+                    </li>
+                    <hr>
+                {% endfor %}
+            </ol>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

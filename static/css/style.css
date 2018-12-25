@@ -1,0 +1,14 @@
+.fnt_kumar{ font-family: 'Kumar One Outline', cursive; }
+
+.fnt_ptsans{ font-family: 'PT Sans', sans-serif; }
+
+.fnt_opensans{ font-family: 'Open Sans Condensed', sans-serif; }
+
+.fnt_pattaya{ font-family: 'Pattaya', sans-serif; }
+
+.fnt_anton{ font-family: 'Anton', sans-serif; }
+
+
+.overlay{
+    background-color: rgba(0, 0, 0, 0.8)
+}

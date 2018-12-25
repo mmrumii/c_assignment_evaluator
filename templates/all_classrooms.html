@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row py-5">
+
+        <div class="col-2">
+
+        </div>
+            <div class="col-8">
+                <ul>
+                    {% for cls in classrooms %}
+                    <li>
+                        <div class="col-12">
+                            <h3>{{ cls.ClassName }}</h3>
+                            <p class="small">{{ cls.ClassDescription }}</p>
+                            <a class="btn btn-large btn-info" href="{{url_for('enroll',classroom_id=cls.ClassroomID)}}">Enroll</a>
+                            <hr>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        <div class="col-2">
+
+        </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="row py-5">
+            <div class="col">
+                <h2>{{ the_assignment.Name }}</h2>
+                <p class="small">{{ the_assignment.Description }}</p>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-5">
+                <h3>Create new task</h3>
+                <form method="POST" action="{{url_for('new_assignment')}}" enctype="multipart/form-data">
+                    <div class="custom-file">
+                        <input class="form-control" name="assignment_id" type="hidden" id="example-number-input" value="{{the_assignment.AssignmentID}}">
+                    </div>
+                        <div class="custom-file py-4">
+                      <input type="file" class="custom-file-input" id="problemFile" name="problemFile">
+                      <label class="custom-file-label" for="problemFile">Choose assignment pdf file</label>
+                    </div>
+                    <div class="custom-file py-4">
+                      <input type="file" class="custom-file-input" id="inputFile" name="inputFile">
+                      <label class="custom-file-label" for="inputFile">Choose input txt file</label>
+                    </div>
+                    <div class="custom-file py-4">
+                      <input type="file" class="custom-file-input" id="outputFile" name="outputFile">
+                      <label class="custom-file-label" for="outputFile">Choose output txt file</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                </form>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-6">
+                <h3>Here are tasks</h3>
+                <ol>
+                    {% for task in tasks %}
+                        <li>{{task.Problem_TXT}}</li>
+
+                        <hr>
+                        <br>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

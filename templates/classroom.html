@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-6">
+                <h3>Create new classroom</h3>
+                <form action="{{url_for('create_classroom')}}" method="POST">
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                          {{ class_form.hidden_tag() }}
+                          {{class_form.ClassName(class = 'col-12')}}
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <div class="col-10">
+                          {{class_form.ClassDescription(class = 'col-12 py-3')}}
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <div class="col-sm-10">
+                          {{class_form.Submit(class = 'btn btn-primary')}}
+                        </div>
+                      </div>
+                </form>
+            </div>
+            <div class="col-6">
+                <h3>Your classrooms</h3>
+                <ol>
+                    {% for class in classrooms %}
+                    <li class="py-3">
+                        <hr>
+                        <h3><a href="{{url_for('classroom_preview',class_id=class.ClassroomID)}}">{{class.ClassName}}</a></h3>
+                        <p class="small">{{class.ClassDescription}}</p>
+                        <a class="btn btn-large btn-info float-right" href="{{url_for('classroom_preview',class_id=class.ClassroomID)}}">Go to classroom</a>
+                        <hr class="float-right">
+                    </li>
+                    {% endfor %}
+                </ol>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
